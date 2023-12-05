@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import { Button, EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout'
 import Heading from '@/components/Heading'
-import Paragraph from '@/components/paragraph'
+import Paragraph from '@/components/Paragraph'
 
 const inter = Inter({ subsets: ['latin'] })
 
