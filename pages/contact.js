@@ -3,7 +3,11 @@ import Image from 'next/image'
 // import { Inter } from 'next/font/google'
 import { Button, EditIcon } from '@/components/mui'
 import Layout from '@/components/Layout';
-import Heading from '@/components/Heading'
+import Heading from '@/components/Heading';
+import ContactForm from '@/components/forms/ContactForm';
+import { sendEmail } from '@/lib/api-functions/client';
+
+
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +22,7 @@ export default function Contact() {
       </Head>
       <Layout>
         <Heading component="h2">Contact Us</Heading>
-        <Button variant="contained"><EditIcon />Button</Button>
+        <ContactForm submitHandler={sendEmail}/>
       </Layout>
     </>
   )
