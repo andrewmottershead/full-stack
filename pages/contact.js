@@ -25,5 +25,5 @@ export default function Contact() {
         <ContactForm submitHandler={sendEmail}/>
       </Layout>
     </>
-  )
+  );
 }
