@@ -34,14 +34,14 @@ export default function BlogPost({ ssd = {} }) {
       <Layout>
         <Heading component="h2">Single Post</Heading>
         <Card component={"article"} sx={{width:'100%'}}>
-                    <CardMedia sx={{display: 'grid', placeContent: 'center'}}>
-                        <Image alt={title} src={url} width="200" height="200" />
-                    </CardMedia>
-                    <CardContent>
-                        <Heading component="h2">{title}</Heading>
-                        <Markdown>{body}</Markdown>
-                    </CardContent>
-                </Card>
+            <CardMedia sx={{display: 'grid', placeContent: 'center'}}>
+                <Image alt={title} src={url} width="200" height="200" />
+            </CardMedia>
+            <CardContent>
+                <Heading component="h2">{title}</Heading>
+                <Markdown>{body}</Markdown>
+            </CardContent>
+        </Card>
       </Layout>
     </>
   );
