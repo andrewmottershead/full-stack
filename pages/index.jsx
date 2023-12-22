@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import {useContext} from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
 
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/lib/api-functions/server/products/queries";
@@ -8,6 +9,7 @@ import { STORAGE_KEY } from "@/lib/tq/products/settings";
 
 import { Inter } from 'next/font/google';
 import { Button, EditIcon } from '@/components/mui';
+import { UIContext } from '@/components/contexts/UI.context';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 import QueryBoundaries from "@/components/QueryBoundaries";
@@ -17,6 +19,9 @@ import ProductList from "@/components/ProductList";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const {
+    showMessage
+  } = useContext(UIContext)
   return (
     <>
       <Head>
@@ -26,7 +31,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-      <Heading  component="h2">Home page</Heading>
+      <Heading component="h2">Products</Heading>
+      <Button onClick={() => showMessage({
+        type: 'error',
+        string: 'Something is wrong'
+      })}>Hi</Button>
       <QueryBoundaries>
         <ProductList />
       <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel.</Paragraph>

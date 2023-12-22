@@ -12,7 +12,7 @@ const ProductList = ({
   canRemove = false,
   canBuy = true,
 }) => {
-  const { user } = useUser();
+  // const { user } = useUser();
 //   const mutation = useAddToBasket();
 
   const { data: products } = useProducts();
