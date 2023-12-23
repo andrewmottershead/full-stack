@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext } from "react";
 import Header from "@/components/Header";
 import Paragraph from "@/components/Paragraph";
 import {
@@ -11,7 +11,6 @@ import {
 import { UIContext } from "./contexts/UI.context";
 
 function Layout({children}) {
-
     const {
     isOpen: open,
     severity,
@@ -20,42 +19,33 @@ function Layout({children}) {
     hideDuration,
   } = useContext(UIContext);
 
-  const action = useCallback((props) => {
-    console.log(props);
-    return (
-      <>
-        <IconButton
-          size="small"
-          aria-label="close"
-          color="inherit"
-          onClick={handleClose}
-        >
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      </>
-    );
-  }, [handleClose]);
-
   return (
     <>
       <header>
         <Header />
       </header>
       <main>
-        <Container maxWidth="md">
+        <Container maxWidth="xl">
             {children}
         </Container>
         </main>
-        <Snackbar
+      <Snackbar
           open={open}
           autoHideDuration={hideDuration}
           onClose={handleClose}
         >
-          <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
           <Paragraph sx={{ margin: "0px" }}>{message}</Paragraph>
-          {action}
-          </Alert>
-        </Snackbar>
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Alert>
+      </Snackbar>
     </>
   );
 }
