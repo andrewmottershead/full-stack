@@ -1,15 +1,15 @@
 // import { useUser } from "@auth0/nextjs-auth0/client";
-import { useProducts } from "@/lib/tq/products/queries";
+import { useBaskets } from "@/lib/tq/baskets/queries";
 // import { useAddToBasket } from "@/lib/tq/baskets/mutations";
 import { List, ListItem } from "@/components/mui";
-import Product from "@/components/Product";
+import Basket from "@/components/Basket";
 import Paragraph from "@/components/Paragraph";
 
-const ProductList = ({
+const BasketList = ({
   deleteHandler = () => {},
   headingLevel = 2 }) => {
-  const { data: products } = useProducts();
-  if(!products.length) return <Paragraph>No products to show</Paragraph>;
+  const { data: baskets } = useBaskets();
+  if(!baskets.length) return <Paragraph>No baskets to show</Paragraph>;
   return (
     <List
       component="ol"
@@ -18,10 +18,10 @@ const ProductList = ({
         gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
       }}
     >
-      {products.map((product) => (
-        <ListItem key={product._id} component="li">
-          <Product
-            product={product}
+      {baskets.map((basket) => (
+        <ListItem key={basket._id} component="li">
+          <Basket
+            basket={basket}
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
           />
@@ -31,4 +31,4 @@ const ProductList = ({
   );
 };
 
-export default ProductList;
+export default BasketList;
