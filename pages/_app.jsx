@@ -5,7 +5,7 @@ import {
   HydrationBoundary,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-// import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <CssBaseline />
-      {/* <UserProvider> */}
+      <UserProvider>
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools />
@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
             </HydrationBoundary>
           </QueryClientProvider>
         </ThemeProvider>
-      {/* </UserProvider> */}
+      </UserProvider>
     </>
   );
 }

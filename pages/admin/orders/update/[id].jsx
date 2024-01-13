@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Layout from '@/components/Layout';
 import Heading from '@/components/Heading';
 
-import OrderForm from '@/components/forms/OrderForm';
+// import OrderForm from '@/components/forms/OrderForm';
 import { useUpdate } from '@/lib/tq/orders/mutations';
 
 import { fetchOrder } from '@/lib/api-functions/server/orders/queries';
@@ -28,10 +28,10 @@ export default function UpdateOrder({ ssd }) {
       </Head>
       <Layout>
       <Heading component="h1">Update Order</Heading>
-      <OrderForm
+      {/* <OrderForm
       Order={ssd}
       submitHandler={submitHandler}
-      />
+      /> */}
       </Layout>
     </>
   );

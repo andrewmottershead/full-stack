@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 import {
     Button,
     AppBar,
@@ -10,11 +11,14 @@ import {
     Typography,
 } from '@/components/mui';
 import { useTheme } from "@mui/material/styles";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 
 function DesktopNavigation({
   handleDrawerToggle = () =>
     console.log("no handleDrawerToggle function provided"),
 }) {
+  const { user } = useUser();
   const theme = useTheme();
   // console.log(theme);
   const lightTextColor = theme.palette.common.white;
@@ -42,7 +46,7 @@ function DesktopNavigation({
               color: lightTextColor,
             }}
           >
-            Design Shop
+            My Shop
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
           <Button
@@ -59,6 +63,32 @@ function DesktopNavigation({
             >
               Contact
             </Button>
+            { user ? (
+              <>
+            <Button
+              sx={{ color: lightTextColor }}
+              component={Link}
+              href="/profile"
+            >
+              Profile
+            </Button>
+            <Button
+                  href="/api/auth/logout"
+                  component={Link}
+                  sx={{ color: lightTextColor }}
+                >
+                  Log Out
+                </Button>
+              </>
+            ) : (
+              <Button
+                href="/api/auth/login"
+                component={Link}
+                sx={{ color: lightTextColor }}
+              >
+                Log In
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
