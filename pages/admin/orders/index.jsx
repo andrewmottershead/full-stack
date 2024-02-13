@@ -6,6 +6,7 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getUserOrdersQuery } from "@/lib/api-functions/server/orders/queries";
 import { STORAGE_KEY } from "@/lib/tq/orders/settings";
 
+import { log } from "@/lib/utils/formatters";
 
 import { Button } from '@/components/mui';
 import Layout from '@/components/Layout';
@@ -39,7 +40,7 @@ export default function AdminOrderList() {
         Add Order
       </Button> */}
       <QueryBoundaries>
-        <OrderList />
+        <OrderList deleteHandler={removeHandler} />
         </QueryBoundaries>
       </Layout>
 
@@ -62,5 +63,6 @@ export async function getStaticProps() {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: 10,
   };
 }

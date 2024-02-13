@@ -24,6 +24,10 @@ const ProductList = ({
             product={product}
             deleteHandler={deleteHandler}
             headingLevel={headingLevel}
+            canUpdate={canUpdate}
+            canRemove={canRemove}
+            canBuy={!!user && canBuy}
+            addToBasket={() => mutation.mutate(product._id)}
           />
         </ListItem>
       ))}
