@@ -19,7 +19,7 @@ import { useDelete } from '@/lib/tq/orders/mutations';
 export default function AdminOrderList() {
     const removeMutation = useDelete();
 
-    const removeHnandler = (id) => {
+    const removeHandler = (id) => {
         removeMutation.mutate(id);
     };
   return (
