@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const {
+  STRIPE_PUBLIC_KEY,
+} = process.env;
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -10,6 +14,9 @@ const nextConfig = {
         pathname: "**",
       },
     ],
+  },
+  env: {
+    STRIPE_PUBLIC_KEY,
   },
 };
 
